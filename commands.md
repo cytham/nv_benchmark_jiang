@@ -21,7 +21,7 @@ gunzip human_hs37d5.fasta.gz
 sed -i '/^[^>]/ y/BDEFHIJKLMNOPQRSUVWXYZbdefhijklmnopqrsuvwxyz/NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN/' human_hs37d5.fasta
 ```
 
-### Preparation of SVs for integration
+### Preparation of SVs for integration (Modified)
 ```
 grep CHM1 nstd162.GRCh37.variant_call.vcf | grep DEL | awk -F '\t' '{print $1"\t"$2}' > del_col1.txt
 grep CHM1 nstd162.GRCh37.variant_call.vcf | grep DEL | awk -F '\t' '{print $8}' | awk -F ';END=' '{print $2}' | awk -F ';' '{print $1"\tdeletion\tNone\t0"}' > del_col2.txt
@@ -42,13 +42,13 @@ paste inv_col1.txt inv_col2.txt | uniq > inv.bed
 cat del.bed ins.bed dup.bed inv.bed | sort -k 1,1 -k 2,2n > chm1.bed
 ```
 
-### Integrate SVs using VISOR
+### Integrate SVs using VISOR (Modified)
 ```
 VISOR HACk -g ../resource/human_hs37d5.fasta -b ../resource/chm1.bed -o chm1  # Modified (The original command line raised an error as the "SHORtS.LASeR.bed file" should not be used at this step.)
 ```
 
-### Simulate long reads
-#### Modified. The "SHORtS.LASeR.bed" file provided was modified to replace the 0s of start coordinates with 1s (Please refer to https://github.com/davidebolo1993/VISOR/issues/18).
+### Simulate long reads (Modified)
+#### The "SHORtS.LASeR.bed" file provided was modified to replace the 0s of start coordinates with 1s (Please refer to https://github.com/davidebolo1993/VISOR/issues/18).
 ```
 # 3X Coverage
 VISOR LASeR -g ../resource/human_hs37d5.fasta -s chm1/ -b ../resource/SV_evaluation/SHORtS.LASeR.edit.bed -o 3x_20k_90 --coverage 3 --identity_min 90 --length_mean 20000 --read_type pacbio --threads 40
@@ -111,7 +111,7 @@ sniffles -m ../sim.srt.bam -v sniffles.vcf -s 4 -l 30 --genotype
 ```
 
 
-### Process NanoVar VCFs and run Truvari
+### Process NanoVar VCFs and run Truvari (Modified)
 ```
 cd ../../3x_20k_90/nanovar
 # Modified. The '>' symbol was removed from the SVLEN field and entries with 'SVLEN=.' were removed due to incompatibility with Truvari.
@@ -142,7 +142,7 @@ tabix sim.srt.edit.nanovar.pass.edit.vcf.gz
 truvari bench -b ../../../resource/SV_evaluation/TOTAL.chm1.vcf.gz -c sim.srt.edit.nanovar.pass.edit.vcf.gz -o all -p 0 --sizemax 100000000
 ```
 
-### Process Sniffles VCFs and run Truvari
+### Process Sniffles VCFs and run Truvari (Modified)
 ```
 cd ../../3x_20k_90/sniffles
 grep '#' sniffles.vcf > head
@@ -191,4 +191,4 @@ tabix sniffles.vcf.gz
 truvari bench -b ../../../resource/SV_evaluation/TOTAL.chm1.vcf.gz -c sniffles.vcf.gz -o all -p 0 --sizemax 100000000
 ```
 
-The summary files of all Truvari analysis can be found [here](https://github.com/cytham/nv_benchmark_jiang/truvari_data).
+### The summary files of all Truvari analysis can be found [here](https://github.com/cytham/nv_benchmark_jiang/truvari_data).
