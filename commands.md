@@ -191,4 +191,4 @@ tabix sniffles.vcf.gz
 truvari bench -b ../../../resource/SV_evaluation/TOTAL.chm1.vcf.gz -c sniffles.vcf.gz -o all -p 0 --sizemax 100000000
 ```
 
-### The summary files of all Truvari analysis can be found [here](https://github.com/cytham/nv_benchmark_jiang/truvari_summary).
+### The summary files of all Truvari analysis can be found [here](../truvari_summary).
