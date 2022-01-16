@@ -1,0 +1,16 @@
+{
+    "TP-base": 9504,
+    "TP-call": 9504,
+    "FP": 1160,
+    "FN": 10099,
+    "precision": 0.8912228057014253,
+    "recall": 0.4848237514666123,
+    "f1": 0.6280107047279215,
+    "base cnt": 19603,
+    "call cnt": 10664,
+    "TP-call_TP-gt": 3294,
+    "TP-call_FP-gt": 6210,
+    "TP-base_TP-gt": 3294,
+    "TP-base_FP-gt": 6210,
+    "gt_concordance": 0.3465909090909091
+}
