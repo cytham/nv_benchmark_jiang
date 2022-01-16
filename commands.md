@@ -87,7 +87,7 @@ cd ../20x_20k_90
 nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24 --debug
 ```
 
-# Run Sniffles
+### Run Sniffles
 ```
 cd ../3x_20k_90
 mkdir sniffles
