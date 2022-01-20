@@ -64,11 +64,11 @@ VISOR LASeR -g ../resource/human_hs37d5.fasta -s chm1/ -b ../resource/SV_evaluat
 ```
 cd 3x_20k_90
 samtools view -h sim.srt.bam | perl -lne '@row = split /\t/; $row[0] =~ s/,/|/g; print join ( "\t", @row );' | samtools view -Sb - -o sim.srt.edit.bam
-cd 5x_20k_90
+cd ../5x_20k_90
 samtools view -h sim.srt.bam | perl -lne '@row = split /\t/; $row[0] =~ s/,/|/g; print join ( "\t", @row );' | samtools view -Sb - -o sim.srt.edit.bam
-cd 10x_20k_90
+cd ../10x_20k_90
 samtools view -h sim.srt.bam | perl -lne '@row = split /\t/; $row[0] =~ s/,/|/g; print join ( "\t", @row );' | samtools view -Sb - -o sim.srt.edit.bam
-cd 20x_20k_90
+cd ../20x_20k_90
 samtools view -h sim.srt.bam | perl -lne '@row = split /\t/; $row[0] =~ s/,/|/g; print join ( "\t", @row );' | samtools view -Sb - -o sim.srt.edit.bam
 ```
 
