@@ -1,8 +1,10 @@
-# Here are the commands used to replicate the benchmark analysis in Jiang et al. 2021
+# Here are the commands used to replicate the benchmark analysis in [Jiang et al. 2021](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-021-04422-y).
 
-### Do note that there are several necessary modifications made because of errors encountered throughout the analysis.
+### The benchmark analysis shown here is an adaptation from Jiang et al.'s analysis outlined [here](https://github.com/SQLiu-youyou/The-commands-of-the-evaluation).
+#### Do note that there are several necessary modifications made because of errors encountered throughout the analysis.
+#### Files from the SV_evaluation directory can be cloned from Jiang et al.'s [repository](https://github.com/SQLiu-youyou/SV_evaluation).
 
-### Tool versions
+### Tool versions:
 * VISOR (v1.1)
 * NanoVar (v1.3.8)
 * Sniffles (v1.0.12)
