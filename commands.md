@@ -62,6 +62,8 @@ VISOR LASeR -g ../resource/human_hs37d5.fasta -s chm1/ -b ../resource/SV_evaluat
 
 #### Modified. The commas (',') in all the read names were removed (replaced with vertical lines ('|')) for compatibility with NanoVar.
 ```
+# If BAM dowloaded from Zenodo, replace 'sim.srt.bam' with respective coverage BAM file (e.g. 3X_sim.srt.bam)
+
 cd 3x_20k_90
 samtools view -h sim.srt.bam | perl -lne '@row = split /\t/; $row[0] =~ s/,/|/g; print join ( "\t", @row );' | samtools view -Sb - -o sim.srt.edit.bam
 cd ../5x_20k_90
@@ -75,20 +77,22 @@ samtools view -h sim.srt.bam | perl -lne '@row = split /\t/; $row[0] =~ s/,/|/g;
 ### Run NanoVar
 ```
 cd ../3x_20k_90
-nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24 --debug
+nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24
 
 cd ../5x_20k_90
-nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24 --debug
+nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24
 
 cd ../10x_20k_90
-nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24 --debug
+nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24
 
 cd ../20x_20k_90
-nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24 --debug
+nanovar sim.srt.edit.bam ../../resource/human_hs37d5.fasta nanovar -x pacbio-clr -t 24
 ```
 
 ### Run Sniffles
 ```
+# If BAM dowloaded from Zenodo, replace 'sim.srt.bam' with respective coverage BAM file (e.g. 3X_sim.srt.bam)
+
 cd ../3x_20k_90
 mkdir sniffles
 cd sniffles
